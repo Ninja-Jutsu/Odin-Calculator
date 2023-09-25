@@ -115,6 +115,7 @@ let operator = '';
 let position = 0;
 let firstNumber = '';
 let secondNumber = '';
+let screenShow = '';
 
 const numbers = [];
 
@@ -151,16 +152,16 @@ const eight = document.querySelector('#eight')
 const zero = document.querySelector('#zero')
 
 
-one.onclick= () => {collectDigits(1);}
-two.onclick = () => {collectDigits(2);}
-three.onclick = () => {collectDigits(3);}
-four.onclick = () => {collectDigits(4);}
-five.onclick = () => {collectDigits(5);}
-six.onclick = () => {collectDigits(6);}
-seven.onclick = () => {collectDigits(7);}
-eight.onclick = () => {collectDigits(8);}
-nine.onclick = () => {collectDigits(9);}
-zero.onclick = () => {collectDigits(0);}
+one.onclick= () => {collectDigits(1);displayCollection(1);screenDisplay();console.log(numbers)}
+two.onclick = () => {collectDigits(2);displayCollection(2);screenDisplay ();}
+three.onclick = () => {collectDigits(3);displayCollection(3);screenDisplay ();}
+four.onclick = () => {collectDigits(4);displayCollection(4);screenDisplay ();}
+five.onclick = () => {collectDigits(5);displayCollection(5);screenDisplay ();}
+six.onclick = () => {collectDigits(6);displayCollection(6);screenDisplay ();}
+seven.onclick = () => {collectDigits(7);displayCollection(7);screenDisplay ();}
+eight.onclick = () => {collectDigits(8);displayCollection(8);screenDisplay ();}
+nine.onclick = () => {collectDigits(9);displayCollection(9);screenDisplay ();}
+zero.onclick = () => {collectDigits(0);displayCollection(0);screenDisplay ();}
 
 const collectDigits = (digit) => {numbers.push(digit);}
 
@@ -175,15 +176,15 @@ const powBtn = document.querySelector('#Pow-btn')
 const rootBtn = document.querySelector('#root-btn')
 const percentageBtn = document.querySelector('#perce-btn')
 
-equalBtn.onclick = () => {splitArrays()}
-// refreshBtn.onclick = () => {splitArrays()}
-divideBtn.onclick = () => {collectDigits('/');}
-multiBtn.onclick = () => {collectDigits('*');}
-subBtn.onclick = () => {collectDigits('-');}
-addBtn.onclick = () => {collectDigits('+');}
-powBtn.onclick = () => {collectDigits('^');}
-rootBtn.onclick = () => {collectDigits('√');}
-percentageBtn.onclick = () => {collectDigits('%');}
+equalBtn.onclick = () => {splitArrays();displayCollection(currentResult);screenDisplay();}
+refreshBtn.onclick= () => {refreshAll();screenDisplay ();}
+divideBtn.onclick = () => {collectDigits('/');displayCollection('/');screenDisplay ();}
+multiBtn.onclick = () => {collectDigits('*');displayCollection('*');screenDisplay ();}
+subBtn.onclick = () => {collectDigits('-');displayCollection('-');screenDisplay ();}
+addBtn.onclick = () => {collectDigits('+');displayCollection('+');screenDisplay ();}
+powBtn.onclick = () => {collectDigits('^');displayCollection('^');screenDisplay ();}
+rootBtn.onclick = () => {collectDigits('√');displayCollection('√');screenDisplay ();}
+percentageBtn.onclick = () => {collectDigits('%');displayCollection('%');screenDisplay();}
 
 
 // Operations:
@@ -239,5 +240,47 @@ const divide = (a,b) => {currentResult = a / b; firstNumber = currentResult; sec
 const toPower = (a,b) => {currentResult = Math.pow(a, b); firstNumber = currentResult; secondNumber = ''; console.log(currentResult)}
 const sqrRoot = () => currentResult >= 0 ? currentResult = Math.sqrt(currentResult) : currentResult = 'The inside of sqrRoot must be positive';
 const percentage = () => currentResult /= 100;
-
 const clearScreen = () => numbers.splice(0,numbers.length);
+
+
+// Screen:
+const screen = document.querySelector('#screen')
+function screenDisplay (){
+     screen.innerHTML = screenShow;
+}
+
+function displayCollection (n){
+    if (n == firstNumber){
+        screenShow = firstNumber;
+    }
+    else if (screenShow === '0'){
+    screenShow = '';
+    screenShow += n; 
+    }
+    else {
+        screenShow += n; 
+    }
+}
+
+function refreshAll(){
+    numbers.splice(0,numbers.length);
+    screenShow = '0';
+    firstNumber = '';
+}
+
+// delete button:
+const deleteBtn = document.querySelector('#delete-btn');
+deleteBtn.onclick = () => {reverseStringTrim(screenShow);screenShow = screenShow.slice(1);console.log(screenShow);reverseStringTrim(screenShow);displayCollection(screenShow)}
+
+let combined = '';
+let piece = '';
+function reverseStringTrim(text){
+   for (i=text.length; i >= 0; i--){
+        piece = text.charAt(i);
+        combined += piece;
+        combined.slice(1);
+        screenShow = combined;
+        console.log(screenShow);
+   }
+}
+
