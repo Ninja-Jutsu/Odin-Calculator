@@ -7,31 +7,43 @@
         <link href="style.css" rel="stylesheet">
     </head>
     <body>
-        <div id="screen" class="screen-style">0</div>
-        <div id="operators">
-            <button id="refresh-btn">C</button>
-            <button id="divide-btn">/</button>
-            <button id="Multi-btn">*</button>
-            <button id="sub-btn">-</button>
-            <button id="add-btn">+</button>
-            <button id="Pow-btn">Pow</button>
-            <button id="root-btn">√</button>
-            <button id="perce-btn">%</button>
-            <button id="equal-btn">=</button>
-            <button id="delete-btn">delete</button>
-
+        <!-- <button id="delete-btn">Del</button> -->
+        <div class="main-container">
+        <div id="buttons">
+            <div class='screen-container'>
+                <div id="screen" class="screen-style">0</div>
+            </div>
+            <div class="align-buttons">
+                <button id="refresh-btn" class="cancel">C</button>
+                <button class="operator">()</button>
+                <button id="perce-btn" class="operator">%</button>
+                <button id="divide-btn" class="operator">/</button>
+            </div>
+            <div class="align-buttons">
+                <button id="seven" class="number">7</button>
+                <button id="eight" class="number">8</button>
+                <button id="nine" class="number">9</button>
+                <button id="Multi-btn" class="operator">x</button>
+            </div>
+            <div class="align-buttons">
+                <button id="four" class="number">4</button>
+                <button id="five" class="number">5</button>
+                <button id="six" class="number">6</button>
+                <button id="sub-btn" class="operator">-</button>
+            </div>
+            <div class="align-buttons">
+                <button id="one" class="number">1</button>
+                <button id="two" class="number">2</button>
+                <button id="three" class="number">3</button>
+                <button id="add-btn" class="operator">+</button>
+            </div>
+            <div class="align-buttons">
+                <button id="Pow-btn" class="number">Xy</button>
+                <button id="zero" class="number">0</button>
+                <button id="period" class="number">.</button>
+                <button id="equal-btn" class="equal">=</button>
+            </div>
         </div>
-        <div>
-            <button id="one">1</button>
-            <button id="two">2</button>
-            <button id="three">3</button>
-            <button id="four">4</button>
-            <button id="five">5</button>
-            <button id="six">6</button>
-            <button id="seven">7</button>
-            <button id="eight">8</button>
-            <button id="nine">9</button>
-            <button id="zero">0</button>
         </div>
     </body>
 </html>
